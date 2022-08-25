@@ -1,0 +1,135 @@
+﻿@model MusicStore.Models.Order
+
+@{ ViewBag.Title = "AddressAndPayment";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm("AddressAndPayment", "Checkout"))
+{
+<div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Figyelem!</strong> Csak valós adatokat adjon meg.
+</div>
+                @Html.AntiForgeryToken()
+                                <fieldset>
+                                    <legend>Rendelés részletei</legend>
+                                    @Html.EditorForModel()
+                                </fieldset>
+                                                <fieldset>
+                                                    <legend>Fizetés</legend>
+                                                    <p>Használja a PIZZATIME2020 kuponkódot limitált ideig, az ajándék pizzaszószért.</p>
+                                                    <div class="editor-label">
+                                                        @Html.Label("Promó Kód")
+                                                    </div>
+                                                    <div class="editor-field">
+                                                        @Html.TextBox("PromoCode")
+                                                    </div>
+                                                </fieldset>
+                                                                <input type="submit" value="Rendelés leadása" />}
+<!-- Nem sikerült sehogy átimportálni ebbe a Viewt, de ha a kommentet kiszedi, akkor látni lehet a tervet, hogy milyenre akartam.
+
+<link href="form-validation.css" rel="stylesheet">
+<fieldset>
+    <div class="bg-light">
+        <div class="container">
+            <div class="py-5 text-center">
+            </div>
+            <div class="col-md-12 order-md-1">
+                <h4 class="mb-3">Rendelés részletei</h4>
+                <hr class="mb-4">
+                <form class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">Vezetéknév:</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Kiss" value="" required>
+                            <div class="invalid-feedback">
+                                Valós vezetéknév megadása szükséges
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Keresztnév:</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="János" value="" required>
+                            <div class="invalid-feedback">
+                                Valós keresztnév megadása szükséges
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="KissJanos@gmail.com" required>
+                        <div class="invalid-feedback">
+                            Valós email cím megadása szükséges
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address">Szállítási cím:</label>
+                        <input type="text" class="form-control" id="address" placeholder="1234, Székesfehérvár, Pipacs utca 5." required>
+                        <div class="invalid-feedback">
+                            Valós szállítási cím megadása szükséges
+                        </div>
+                    </div>
+                    <h4 class="mb-3">Fizetési Mód</h4>
+
+                    <div class="d-block my-3">
+                        <div class="custom-control custom-radio">
+                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                            <label class="custom-control-label" for="credit">Online bankkártyás fizetés</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="debit">Utánvéttel</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-name">Kártyabirtokos Neve:</label>
+                            <input type="text" class="form-control" id="cc-name" placeholder="Kiss János" required>
+                            <div class="invalid-feedback">
+                                Teljes név megadása szükséges
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-number">Kártyaszám:</label>
+                            <input type="text" class="form-control" id="cc-number" placeholder="8888-7777-1111-2222" required>
+                            <div class="invalid-feedback">
+                                Kártyaszám megadása szükséges
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-expiration">Lejárati dátum:</label>
+                            <input type="text" class="form-control" id="cc-expiration" placeholder="04/21" required>
+                            <div class="invalid-feedback">
+                                Lejárati dátum megadása szükséges
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-cvv">CVV:</label>
+                            <input type="text" class="form-control" id="cc-cvv" placeholder="586" required>
+                            <div class="invalid-feedback">
+                                Ellenőrző kód megadása szükséges
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="save-info">
+                        <label class="custom-control-label" for="save-info">Mentse el adataimat a következő alkalomra</label>
+                    </div>
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Rendelés véglegesítése</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</fieldset>
+-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="form-validation.js"></script>

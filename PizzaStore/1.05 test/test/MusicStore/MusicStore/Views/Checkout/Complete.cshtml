@@ -1,0 +1,11 @@
+﻿@model int
+@{ ViewBag.Title = "Checkout Complete";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2>Rendelését rögzítettük</h2>
+<hr/>
+<p>Köszönjük rendelését. Rendelésazonosítója: @Model</p>
+<p>
+    Vissza a 
+    @Html.ActionLink("főoldalra", "Index", "Home")
+</p>

@@ -1,0 +1,26 @@
+﻿@model MusicStore.Models.Album
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Artist.Name</h2>
+<p>
+    <img alt="@Model.Title" src="@Model.AlbumArtUrl" style=" width:263px; height:263px;" />
+</p>
+<div id="album-details">
+    <p>
+        <em>Megnevezés:</em> @Model.Artist.Name     
+    </p>
+    <p>
+        <em>Leírás:</em>@Model.Title
+    </p>
+    <p>
+        <em>Ár:</em> @String.Format("{0:F}", Model.Price) Ft
+    </p>
+    <p class="button">
+        <i class="fas fa-shopping-cart"></i> @Html.ActionLink("Kosárba","AddToCart","ShoppingCart", new { id = Model.AlbumId }, "")
+    </p>
+</div>
+
